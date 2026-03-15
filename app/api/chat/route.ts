@@ -9,7 +9,9 @@ export async function POST(req: Request) {
 
   let faqs = [];
   try {
-    faqs = await client.fetch(faqQuery);
+    if (client) {
+      faqs = await client.fetch(faqQuery);
+    }
   } catch (e) {
     console.error("Failed to fetch FAQs", e);
   }
