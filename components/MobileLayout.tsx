@@ -57,39 +57,34 @@ export default function MobileLayout({
   const clipFrom = getClipFrom(sourceRect);
 
   return (
-    <div ref={containerRef} className="relative h-dvh overflow-hidden bg-background text-foreground">
+    <div ref={containerRef} className="relative min-h-dvh bg-background text-foreground pb-6">
       {/* Mobile column layout */}
-      <div
-        className="grid h-full"
-        style={{
-          gridTemplateRows:
-            "minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 2fr) minmax(0, 0.7fr) minmax(0, 0.7fr) minmax(0, 1.5fr) minmax(0, 0.8fr)",
-        }}
-      >
+      <div className="flex flex-col">
         {/* Hero Section */}
-        <div className="overflow-hidden border-b border-bento-line bg-panel-bg px-6 py-4">
+        <div className="border-b border-bento-line bg-panel-bg px-6 py-8">
           <HeroSection data={siteData.hero} />
         </div>
 
         {/* Job Status Section */}
-        <div className="overflow-hidden border-b border-bento-line bg-panel-bg">
+        <div className="border-b border-bento-line bg-panel-bg">
           <JobStatusSection data={siteData.jobStatus} />
         </div>
 
         {/* Skills Section */}
-        <div className="overflow-hidden border-b border-bento-line bg-panel-bg px-6 py-6">
+        <div className="border-b border-bento-line bg-panel-bg px-6 py-8">
           <SkillsSection data={siteData.skills} />
         </div>
 
         {/* Work Section */}
         <div
           ref={workRef}
-          className="flex cursor-pointer items-center justify-between overflow-hidden border-b border-bento-line bg-panel-bg px-6 transition-colors duration-200 hover:opacity-80"
+          className="flex cursor-pointer items-center justify-between border-b border-bento-line bg-panel-bg px-6 py-5 transition-colors duration-200 hover:opacity-80"
+          onClick={handleWorkExpand}
         >
           <SectionHeading_Clickable onClick={handleWorkExpand}>
             {t({ zh: "作品集", en: "Portfolio" })}
           </SectionHeading_Clickable>
-          <div onClick={handleWorkExpand} className="text-xl">
+          <div className="text-xl">
             +
           </div>
         </div>
@@ -97,7 +92,7 @@ export default function MobileLayout({
         {/* About Section */}
         <div
           ref={aboutRef}
-          className="flex cursor-pointer items-center justify-between overflow-hidden border-b border-bento-line bg-panel-bg px-6 transition-colors duration-200 hover:opacity-80"
+          className="flex cursor-pointer items-center justify-between border-b border-bento-line bg-panel-bg px-6 py-5 transition-colors duration-200 hover:opacity-80"
           onClick={handleAboutExpand}
         >
           <SectionHeading_Clickable onClick={handleAboutExpand}>
@@ -109,12 +104,12 @@ export default function MobileLayout({
         </div>
 
         {/* Contact Section */}
-        <div className="overflow-hidden border-b border-bento-line bg-panel-bg px-6 py-6 border-r-0">
+        <div className="border-b border-bento-line bg-panel-bg px-6 py-8">
           <ContactSection data={siteData.contact} />
         </div>
 
         {/* Resume Section */}
-        <div className="overflow-hidden bg-panel-bg">
+        <div className="bg-panel-bg py-4">
           <ResumeSection data={siteData.resume} />
         </div>
       </div>
